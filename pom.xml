@@ -158,6 +158,18 @@
       <artifactId>testcontainers-mysql</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- Logback HTTP dependency -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+    <!-- Use Logback HTTP Appender such as splunk-logback-logging -->
+    <dependency>
+      <groupId>com.splunk.logging</groupId>
+      <artifactId>splunk-library-javalogging</artifactId>
+      <version>1.11.8</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -417,4 +429,12 @@
       </build>
     </profile>
   </profiles>
+  <!-- Configure Splunk Repository -->
+  <repositories>
+      <repository>
+          <id>splunk-artifactory</id>
+          <name>Splunk Releases</name>
+          <url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
+      </repository>
+  </repositories>
 </project>
