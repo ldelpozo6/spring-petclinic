@@ -1,0 +1,26 @@
+<!-- Configure logback-spring.xml -->
+<configuration>
+  <appender name="SPLUNK" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+    <url>https://$SPLUNK_HOST:$SPLUNK_PORT</url>
+    <token>$HEC_TOKEN</token>
+    <index>petclinic</index>
+    <source>petclinic-monolith</source>
+    <sourcetype>springboot:log</sourcetype>
+    <disableCertificateValidation>true</disableCertificateValidation>
+    <batchSize>1</batchSize>
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>
+        {
+          "level": "%level",
+          "thread": "%thread",
+          "logger": "%logger",
+          "message": "%message",
+          "timestamp": "%d{ISO8601}"
+        }
+      </pattern>
+    </layout>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="SPLUNK"/>
+  </root>
+</configuration>
