@@ -15,6 +15,7 @@
           "thread": "%thread",
           "logger": "%logger",
           "message": "%message",
+		  "trace_id":"%X{trace_id}",
           "timestamp": "%d{ISO8601}"
         }
       </pattern>
